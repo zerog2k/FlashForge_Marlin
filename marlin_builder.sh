@@ -19,7 +19,7 @@ function usage()
 
    arguments:
      -h           show this help message and exit
-     -m           machine name ( nx/dreamer/inventor )
+     -m           machine name ( nx/dreamer/inventor/ultra3d )
      -s           swap extruders ( for dreamer and inventor machines )
      -o           use Dreamer old motherboard ( swap extruder DIR )
      -l           enable linear advance ( pressure control algo )
@@ -96,6 +96,9 @@ elif [[ "$machine" == "dremel" ]]
 then
    flags+="-DFF_DREMEL_3D20_MACHINE"
    encryption_key="flashforge123456"
+elif [[ "$machine" == "ultra3d" ]]
+then
+   flags+="-DFF_DREAMER_MACHINE -DFF_SILVER_PULLEY -DFF_EXTRUDER_SWAP -DFF_DREAMER_OLD_MB"
 else
    usage
    exit
