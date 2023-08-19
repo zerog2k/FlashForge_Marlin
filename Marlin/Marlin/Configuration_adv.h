@@ -535,7 +535,7 @@
  * The fan turns on automatically whenever any driver is enabled and turns
  * off (or reduces to idle speed) shortly after drivers are turned off.
  */
-//#define USE_CONTROLLER_FAN
+#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
   //#define CONTROLLER_FAN_PIN -1           // Set a custom pin for the controller fan
   //#define CONTROLLER_FAN2_PIN -1          // Set a custom pin for second controller fan
@@ -547,9 +547,9 @@
   #define CONTROLLERFAN_IDLE_TIME        60 // (seconds) Extra time to keep the fan running after disabling motors
 
   // Use TEMP_SENSOR_BOARD as a trigger for enabling the controller fan
-  //#define CONTROLLER_FAN_MIN_BOARD_TEMP 40  // (°C) Turn on the fan if the board reaches this temperature
+  #define CONTROLLER_FAN_MIN_BOARD_TEMP 40  // (°C) Turn on the fan if the board reaches this temperature
 
-  //#define CONTROLLER_FAN_EDITABLE         // Enable M710 configurable settings
+  #define CONTROLLER_FAN_EDITABLE         // Enable M710 configurable settings
   #if ENABLED(CONTROLLER_FAN_EDITABLE)
     #define CONTROLLER_FAN_MENU             // Enable the Controller Fan submenu
   #endif
@@ -3766,19 +3766,11 @@
   #define CUSTOM_MENU_MAIN_SCRIPT_RETURN      // Return to status screen after a script
   #define CUSTOM_MENU_MAIN_ONLY_IDLE          // Only show custom menu when the machine is idle
 
-  #define MAIN_MENU_ITEM_1_DESC   "Enable case fan"
-  #define MAIN_MENU_ITEM_1_GCODE  "M141 S45"
-  //#define MAIN_MENU_ITEM_1_CONFIRM          // Show a confirmation dialog before this action
-
-  #define MAIN_MENU_ITEM_2_DESC   "Disable case fan"
-  #define MAIN_MENU_ITEM_2_GCODE  "M141 S0"
-  //#define MAIN_MENU_ITEM_2_CONFIRM          // Show a confirmation dialog before this action
-
-  #define MAIN_MENU_ITEM_3_DESC   "Bed leveling (3-point)"
+  #define MAIN_MENU_ITEM_1_DESC   "Bed leveling (3-point)"
   #include "BedLevelingScript.h"
 
-  #define MAIN_MENU_ITEM_4_DESC   "Calibrate Touch Screen"
-  #define MAIN_MENU_ITEM_4_GCODE    "M995"
+  #define MAIN_MENU_ITEM_2_DESC   "Calibrate Touch Screen"
+  #define MAIN_MENU_ITEM_2_GCODE    "M995"
 #endif
 
 // @section custom config menu

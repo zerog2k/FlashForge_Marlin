@@ -49,9 +49,17 @@ thermosensor K-couple ADS1118
 #define CAMERA_PWR_ON_PIN   PF15
 /* ........................ */
 
-//#define I2C_EEPROM
-//#define SRAM_EEPROM_EMULATION
-#define SDCARD_EEPROM_EMULATION
+// Use one of these or SDCard-based Emulation will be used
+#if NO_EEPROM_SELECTED
+  //#define SDCARD_EEPROM_EMULATION                 // Use SD card-based EEPROM emulation
+  #define FLASH_EEPROM_EMULATION                  // Use Flash-based EEPROM emulation
+#endif
+
+#if ENABLED(FLASH_EEPROM_EMULATION)
+  // Decrease delays and flash wear by spreading writes across the
+  // 128 kB sector allocated for EEPROM emulation.
+  #define FLASH_EEPROM_LEVELING
+#endif
 
 #define DIGIPOTS_I2C_SCL                    PF12    /* shared CLK */
 #define DIGIPOTS_I2C_SDA_X                  PB5     /* X */
@@ -158,7 +166,7 @@ thermosensor K-couple ADS1118
 #define TEMP_0_PIN                          -1
 #define TEMP_1_PIN                          -1
 #define TEMP_BED_PIN                        PC5 /* NTC1 */
-#define TEMP_CHAMBER_PIN                    PC4 /* NTC2 */
+#define TEMP_BOARD_PIN                      PC4 /* NTC2 */
 
 /* ADS1118 */
 #define HAS_SPI_ADS1118                     1
@@ -185,12 +193,11 @@ thermosensor K-couple ADS1118
 #endif
 #define HEATER_BED_PIN                      PA1  /* Heat Board */
 
-#define HEATER_CHAMBER_PIN                  USER_LED1_PIN
+#define CONTROLLER_FAN_PIN                  PE1
 /* from 2.0.9.3 */
-#define FAN2_PIN                            PE1 /* FF rearcase fan */
-#define CHAMBER_FAN_INDEX                   2
+//#define FAN2_PIN                            PE1 /* FF rearcase fan */
 
-/* part colling fan aka FAN0 */
+/* part cooling fan aka FAN0 */
 #define FAN_PIN                             PF5
 //#define FAN1_PIN                            CHAMBER_AUTO_FAN_PIN
 #define FAN_SOFT_PWM
