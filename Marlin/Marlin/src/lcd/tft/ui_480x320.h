@@ -36,10 +36,10 @@
 #define MENU_ITEM_ICON_SPACE  42
 
 #if HAS_UI_480x320
-  #define MENU_FONT_NAME      Helvetica18
+  #define MENU_FONT_NAME      ProFont29
   #define SYMBOLS_FONT_NAME   Helvetica18_symbols
-  #define MENU_ITEM_HEIGHT    43
-  #define FONT_LINE_HEIGHT    34
+  #define MENU_ITEM_HEIGHT    50
+  #define FONT_LINE_HEIGHT    40
 #elif HAS_UI_480x272
   #define MENU_FONT_NAME      Helvetica14
   #define SYMBOLS_FONT_NAME   Helvetica14_symbols
